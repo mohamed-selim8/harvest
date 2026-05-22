@@ -1,0 +1,23 @@
+.bor {
+  border: 3px dotted black;
+  width: 60px;
+  height: 60px;
+  padding-top: 15px;
+  border-radius: 50%;
+}
+.bor2 {
+  border: 1px solid black;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+
+.factory {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: aliceblue;
+}

@@ -1,0 +1,14 @@
+.fr-txt {
+  background-color: rgba(226, 135, 43, 0.599);
+  color: orange;
+}
+
+.sc-txt {
+  color: rgb(249, 162, 0);
+}
+
+@media (max-width: 426px) {
+  .hero {
+    text-align: center;
+  }
+}

@@ -1,0 +1,12 @@
+.class-back,
+.class-forward {
+  background: rgba(0, 0, 0, 0.08);
+  margin: 0 3px;
+  border-radius: 2px;
+}
+
+.class-back:hover,
+.class-forward:hover {
+  background: orange;
+  color: rgb(240, 248, 255);
+}

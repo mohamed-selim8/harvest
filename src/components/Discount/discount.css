@@ -1,0 +1,23 @@
+.bac {
+  background-color: rgba(240, 248, 255, 0.861);
+  padding: 0;
+}
+
+/* image responsevenes */
+
+@media (max-width: 322px) {
+  .ib {
+    width: 75%;
+    height: 75%;
+    margin: auto;
+    object-fit: contain;
+  }
+}
+
+@media (min-width: 325px) {
+  .ib {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

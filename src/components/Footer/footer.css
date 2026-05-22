@@ -1,0 +1,36 @@
+.logoo {
+  font-size: 28px;
+  font-weight: 500;
+  color: #000;
+}
+.logoo:hover {
+  color: #000;
+}
+
+.email {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  right: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.email-icon {
+  font-size: 20px;
+}
+
+.inpu {
+  outline: none;
+}
+
+.parents {
+  width: 60%;
+}
+
+@media (max-width: 325px) {
+  .parents {
+    width: 100%;
+  }
+}
