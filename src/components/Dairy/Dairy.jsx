@@ -15,7 +15,7 @@ function Dairy() {
   let dairy = useContext(Data);
 
   // state for filteration
-  let [category, setCateg] = useState("dairy");
+  let [category] = useState("dairy");
 
   // fav hook
   const { isFavorite, addFavorite, removeFavorite } = useFavorites();
@@ -23,25 +23,25 @@ function Dairy() {
   // add item to cart
   let { addItem, inCart } = useCart();
 
-  let results = dairy.map((e) => {
-    const isProductFavorite = isFavorite(e.id);
-    //  دالة لتبديل حالة المفضلة
-    const handleToggleFavorite = () => {
-      if (isProductFavorite) {
-        removeFavorite(e.id);
-      } else {
-        // نمرر المنتج كاملاً للتخزين
-        addFavorite(e);
-      }
-    };
-    if (e.category === category) {
+  let results = dairy
+    .filter((e) => e.category === category)
+    .map((e) => {
+      const isProductFavorite = isFavorite(e.id);
+
+      const handleToggleFavorite = () => {
+        if (isProductFavorite) {
+          removeFavorite(e.id);
+        } else {
+          addFavorite(e);
+        }
+      };
+
       return (
         <div
           key={e.id}
-          className="card shadow prodItems  my-3  mx-auto text-center "
+          className="card shadow prodItems my-3 mx-auto text-center"
         >
           <div className="icons p-3 d-flex align-items-center justify-content-between">
-            {/* fav style */}
             {isProductFavorite ? (
               <FavoriteIcon
                 style={{ cursor: "pointer", color: "red" }}
@@ -54,28 +54,30 @@ function Dairy() {
               />
             )}
 
-            {/* to do */}
-
             <AddIcon
-              className="bg-warning rounded "
+              className="bg-warning rounded"
               style={{ cursor: "pointer" }}
               onClick={handleToggleFavorite}
             />
           </div>
+
           <img
             src={e.img}
-            className={`prodEmo w-75  m-auto py-${e.pad} my-${e.mar}`}
+            className={`prodEmo w-75 m-auto py-${e.pad} my-${e.mar}`}
             alt=""
             style={{ height: "200px", objectFit: "contain" }}
           />
-          <div className=" card-body">
+
+          <div className="card-body">
             <p
               className={`my-${e.mar} text-capitalize`}
               style={{ fontWeight: "700" }}
             >
               {e.title}
             </p>
+
             <h5 className="mb-3">${e.price}</h5>
+
             {inCart(e.id) ? (
               <Button
                 variant="contained"
@@ -89,8 +91,7 @@ function Dairy() {
               <Button
                 sx={{ fontWeight: "700", outline: "none" }}
                 size="small"
-                // variant="outlined"
-                className="w-50 m-auto  text-capitalize p-2 rounded-pill bg-warning text-white  "
+                className="w-50 m-auto text-capitalize p-2 rounded-pill bg-warning text-white"
                 onClick={() => addItem(e)}
               >
                 Add to cart
@@ -99,8 +100,7 @@ function Dairy() {
           </div>
         </div>
       );
-    }
-  });
+    });
   return (
     <section className="container-fluid">
       <Navbar />
