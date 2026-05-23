@@ -15,26 +15,28 @@ function Fruits() {
   let fruit = useContext(Data);
 
   // state for filteration
-  let [category, setCateg] = useState("fruit");
+  let [category] = useState("fruit");
 
   // fav hook
-  const { favorites, isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   // add item to cart
   let { addItem, inCart } = useCart();
 
-  let results = fruit.map((e) => {
-    const isProductFavorite = isFavorite(e.id);
-    //  دالة لتبديل حالة المفضلة
-    const handleToggleFavorite = () => {
-      if (isProductFavorite) {
-        removeFavorite(e.id);
-      } else {
-        // نمرر المنتج كاملاً للتخزين
-        addFavorite(e);
-      }
-    };
-    if (e.category === category) {
+  let results = fruit
+    .filter((e) => e.category === category)
+    .map((e) => {
+      const isProductFavorite = isFavorite(e.id);
+      //  دالة لتبديل حالة المفضلة
+      const handleToggleFavorite = () => {
+        if (isProductFavorite) {
+          removeFavorite(e.id);
+        } else {
+          // نمرر المنتج كاملاً للتخزين
+          addFavorite(e);
+        }
+      };
+
       return (
         <div
           key={e.id}
@@ -99,8 +101,7 @@ function Fruits() {
           </div>
         </div>
       );
-    }
-  });
+    });
   return (
     <section className="container-fluid">
       <Navbar />
