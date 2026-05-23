@@ -6,7 +6,7 @@ import { useCart } from "react-use-cart";
 import { Button } from "@mui/material";
 
 function FavoritesPage() {
-  const { favorites, removeFavorite, isFavorite } = useFavorites();
+  const { favorites, removeFavorite } = useFavorites();
   const { addItem } = useCart();
 
   // handel favorites if it empty
