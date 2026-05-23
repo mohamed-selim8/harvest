@@ -54,25 +54,25 @@ function Products() {
     return ProductsList.filter((e) => {
       return e.category === showFilter;
     });
-  });
+  }, [ProductsList, showFilter]);
 
   let dairies = useMemo(() => {
     return ProductsList.filter((e) => {
       return e.category === showFilter;
     });
-  });
+  }, [ProductsList, showFilter]);
 
   let seafoods = useMemo(() => {
     return ProductsList.filter((e) => {
       return e.category === showFilter;
     });
-  });
+  }, [ProductsList, showFilter]);
 
   let vegetables = useMemo(() => {
     return ProductsList.filter((e) => {
       return e.category === showFilter;
     });
-  });
+  }, [ProductsList, showFilter]);
 
   let AllProd = ProductsList; // refer to btn => all
 

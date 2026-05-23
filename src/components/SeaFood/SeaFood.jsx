@@ -15,26 +15,28 @@ function SeaFood() {
   let seaFood = useContext(Data);
 
   // state for filteration
-  let [category, setCateg] = useState("seaFood");
+  let [category] = useState("seaFood");
 
   // fav hook
-  const { favorites, isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
 
   // add item to cart
   let { addItem, inCart } = useCart();
 
-  let results = seaFood.map((e) => {
-    const isProductFavorite = isFavorite(e.id);
-    //  دالة لتبديل حالة المفضلة
-    const handleToggleFavorite = () => {
-      if (isProductFavorite) {
-        removeFavorite(e.id);
-      } else {
-        // نمرر المنتج كاملاً للتخزين
-        addFavorite(e);
-      }
-    };
-    if (e.category === category) {
+  let results = seaFood
+    .filter((e) => e.category === category)
+    .map((e) => {
+      const isProductFavorite = isFavorite(e.id);
+      //  دالة لتبديل حالة المفضلة
+      const handleToggleFavorite = () => {
+        if (isProductFavorite) {
+          removeFavorite(e.id);
+        } else {
+          // نمرر المنتج كاملاً للتخزين
+          addFavorite(e);
+        }
+      };
+
       return (
         <div
           key={e.id}
@@ -99,8 +101,7 @@ function SeaFood() {
           </div>
         </div>
       );
-    }
-  });
+    });
   return (
     <section className="container-fluid">
       <Navbar />
